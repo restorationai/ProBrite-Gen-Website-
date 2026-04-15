@@ -11,6 +11,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenQuote }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isResourcesOpen, setIsResourcesOpen] = useState(false);
   const [isMobileAreasOpen, setIsMobileAreasOpen] = useState(false);
 
   // Prevent background scrolling when mobile menu is open
@@ -73,16 +74,16 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenQuote }) => {
           </div>
 
           {/* DESKTOP ONLY: Navigation */}
-          <nav className="hidden lg:flex space-x-4 xl:space-x-8 items-center text-sm font-black uppercase tracking-widest h-full">
+          <nav className="hidden lg:flex flex-grow justify-center gap-6 xl:gap-10 items-center text-[11px] xl:text-sm font-black uppercase tracking-widest h-full px-4">
             <button 
               onClick={() => onNavigate('home')} 
-              className="hover:text-primary transition-colors focus:outline-none py-8 font-black uppercase text-sm tracking-widest"
+              className="hover:text-primary transition-colors focus:outline-none py-8 font-black uppercase tracking-widest whitespace-nowrap"
             >
               Home
             </button>
             
             <div className="relative group py-8 h-full flex items-center">
-              <div className="flex items-center gap-1 cursor-pointer hover:text-primary transition-colors">
+              <div className="flex items-center gap-1 cursor-pointer hover:text-primary transition-colors whitespace-nowrap">
                 Services <ChevronDown size={14} />
               </div>
               <div className="absolute top-full left-0 w-72 bg-navy border border-white border-opacity-10 shadow-2xl invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 z-50">
@@ -96,7 +97,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenQuote }) => {
               </div>
             </div>
 
-            <button onClick={() => onNavigate('gallery')} className="hover:text-primary transition-colors focus:outline-none py-8 font-black uppercase text-sm tracking-widest">Gallery</button>
+            <button onClick={() => onNavigate('gallery')} className="hover:text-primary transition-colors focus:outline-none py-8 font-black uppercase tracking-widest whitespace-nowrap">Gallery</button>
             
             {/* Service Areas Dropdown */}
             <div className="relative group py-8 h-full flex items-center flex-shrink-0">
@@ -117,8 +118,20 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenQuote }) => {
               </div>
             </div>
 
-            <button onClick={() => onNavigate('blog')} className="hover:text-primary transition-colors focus:outline-none py-8 font-black uppercase text-sm tracking-widest">Blog</button>
-            <button onClick={() => onNavigate('contact')} className="hover:text-primary transition-colors font-black uppercase text-sm tracking-widest">Contact</button>
+            {/* Resources Dropdown */}
+            <div className="relative group py-8 h-full flex items-center">
+              <div className="flex items-center gap-1 cursor-pointer hover:text-primary transition-colors whitespace-nowrap">
+                Resources <ChevronDown size={14} />
+              </div>
+              <div className="absolute top-full left-0 w-48 bg-navy border border-white border-opacity-10 shadow-2xl invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 z-50">
+                <div className="flex flex-col">
+                  <button onClick={() => onNavigate('blog')} className="px-6 py-5 hover:bg-primary text-left transition-colors border-b border-white border-opacity-5">Blog</button>
+                  <button onClick={() => onNavigate('careers')} className="px-6 py-5 hover:bg-primary text-left transition-colors">Careers</button>
+                </div>
+              </div>
+            </div>
+
+            <button onClick={() => onNavigate('contact')} className="hover:text-primary transition-colors font-black uppercase tracking-widest whitespace-nowrap">Contact</button>
           </nav>
 
           {/* DESKTOP ONLY: Actions */}
@@ -210,12 +223,21 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onOpenQuote }) => {
               )}
             </div>
 
-            <button 
-              onClick={() => handleNavigate('blog')}
-              className="px-6 py-6 border-b border-white border-opacity-5 text-left hover:bg-primary transition-colors"
-            >
-              Blog
-            </button>
+            {/* Resources Mobile Dropdown */}
+            <div className="flex flex-col border-b border-white border-opacity-5">
+              <button 
+                onClick={() => setIsResourcesOpen(!isResourcesOpen)}
+                className="px-6 py-6 flex items-center justify-between text-left hover:bg-primary transition-colors"
+              >
+                Resources <ChevronDown size={18} className={`transition-transform ${isResourcesOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {isResourcesOpen && (
+                <div className="bg-black bg-opacity-20 flex flex-col">
+                  <button onClick={() => handleNavigate('blog')} className="px-10 py-5 border-b border-white border-opacity-5 text-left text-xs hover:text-primary transition-colors">Blog</button>
+                  <button onClick={() => handleNavigate('careers')} className="px-10 py-5 text-left text-xs hover:text-primary transition-colors">Careers</button>
+                </div>
+              )}
+            </div>
 
             <button 
               onClick={() => handleNavigate('contact')}

@@ -66,6 +66,7 @@ const Footer: React.FC<FooterProps> = ({ onOpenQuote, onNavigate }) => {
               <li><button onClick={() => onNavigate?.('home')} className="hover:text-primary transition-colors text-left uppercase">Home</button></li>
               <li><button onClick={() => onNavigate?.('gallery')} className="hover:text-primary transition-colors text-left uppercase">Gallery</button></li>
               <li><button onClick={() => onNavigate?.('blog')} className="hover:text-primary transition-colors text-left uppercase">Blog</button></li>
+              <li><button onClick={() => onNavigate?.('careers')} className="hover:text-primary transition-colors text-left uppercase">Careers</button></li>
               <li><button onClick={() => onNavigate?.('contact')} className="hover:text-primary transition-colors text-left uppercase">Contact</button></li>
             </ul>
           </div>

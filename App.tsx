@@ -10,6 +10,7 @@ import HotWaterPage from './components/HotWaterPage';
 import GalleryPage from './components/GalleryPage';
 import ContactPage from './components/ContactPage';
 import BlogPage from './components/BlogPage';
+import CareersPage from './components/CareersPage';
 import BlogPost1 from './components/BlogPost1';
 import BlogPost2 from './components/BlogPost2';
 import BlogPost3 from './components/BlogPost3';
@@ -19,7 +20,7 @@ import BlogPost6 from './components/BlogPost6';
 import Footer from './components/Footer';
 import QuoteModal from './components/QuoteModal';
 
-export type PageType = 'home' | 'water-damage' | 'sewage-backup' | 'mold-remediation' | 'water-softener' | 'hot-water' | 'gallery' | 'contact' | 'blog' | 'blog-post-1' | 'blog-post-2' | 'blog-post-3' | 'blog-post-4' | 'blog-post-5' | 'blog-post-6';
+export type PageType = 'home' | 'water-damage' | 'sewage-backup' | 'mold-remediation' | 'water-softener' | 'hot-water' | 'gallery' | 'contact' | 'blog' | 'careers' | 'blog-post-1' | 'blog-post-2' | 'blog-post-3' | 'blog-post-4' | 'blog-post-5' | 'blog-post-6';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageType>('home');
@@ -51,6 +52,7 @@ const App: React.FC = () => {
         {currentPage === 'gallery' && <GalleryPage />}
         {currentPage === 'contact' && <ContactPage />}
         {currentPage === 'blog' && <BlogPage onNavigate={navigate} onOpenQuote={openQuoteModal} />}
+        {currentPage === 'careers' && <CareersPage />}
         {currentPage === 'blog-post-1' && <BlogPost1 onOpenQuote={openQuoteModal} />}
         {currentPage === 'blog-post-2' && <BlogPost2 onOpenQuote={openQuoteModal} />}
         {currentPage === 'blog-post-3' && <BlogPost3 onOpenQuote={openQuoteModal} />}

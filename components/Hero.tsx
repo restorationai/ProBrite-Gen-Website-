@@ -7,8 +7,8 @@ const Hero: React.FC = () => {
       {/* Background with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://storage.googleapis.com/msgsndr/Tx5eKisj3Xluq1SeZKe3/media/6976c78bc1fa0c9f59a78f69.png" 
-          alt="Restoration and Demolition Site" 
+          src="https://assets.cdn.filesafe.space/Tx5eKisj3Xluq1SeZKe3/media/69d454413d829c73b28678e0.png" 
+          alt="ProBrite Gen Restoration" 
           className="w-full h-full object-cover object-center scale-100 lg:scale-[1.05] transition-transform duration-700 brightness-90 contrast-110"
           style={{ imageRendering: 'auto' }}
         />
